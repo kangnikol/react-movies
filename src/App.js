@@ -63,7 +63,7 @@ const App = () => {
       <div className="list">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
-      <div className="content py-4">
+      <div className="content py-4 xl:grid xl:grid-cols-4 xl:gap-x-4 xl:gap-y-4">
         <MovieList
           movies={movies}
           handleFavouritesClick={addFavouriteMovie}
@@ -73,7 +73,7 @@ const App = () => {
       <div className="title text-center flex-column py-4">
         <MovieListHeader header="Favourite" />
       </div>
-      <div className="content py-4">
+      <div className="content py-4 xl:grid xl:grid-cols-4 xl:gap-x-4 xl:gap-y-4">
         <MovieList
           movies={favourites}
           handleFavouritesClick={removeFavouriteMovie}
