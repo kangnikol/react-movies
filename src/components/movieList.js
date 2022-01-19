@@ -20,7 +20,7 @@ const MovieList = (props) => {
             <div className="flex text-center flex-col">
               <p className="pt-2 text-lg">{movie.Title}</p>
               <p className="pb-2">
-                {movie.Year} | {movie.Type}
+                {movie.Year} || {movie.Type}
               </p>
             </div>
           </div>
