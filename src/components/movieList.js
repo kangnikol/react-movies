@@ -7,12 +7,6 @@ const MovieList = (props) => {
       {props.movies.map((movie) => (
         <div className="card">
           <div className="py-2">
-            <div className="flex text-center flex-col">
-              <p className="pb-2 text-lg">{movie.Title}</p>
-              <p className="pb-2">
-                {movie.Year} | {movie.Type}
-              </p>
-            </div>
             <div className="flex justify-center">
               <div className="image-container">
                 <img src={movie.Poster} alt="Movie Thumbnail" />
@@ -22,6 +16,12 @@ const MovieList = (props) => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="flex text-center flex-col">
+              <p className="pt-2 text-lg">{movie.Title}</p>
+              <p className="pb-2">
+                {movie.Year} | {movie.Type}
+              </p>
             </div>
           </div>
         </div>
