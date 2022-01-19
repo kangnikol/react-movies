@@ -3,6 +3,7 @@ import "./App.css";
 import MovieList from "./components/movieList";
 import MovieListHeader from "./components/movieListHeader";
 import MyFavourite from "./components/myFav";
+import RemoveFavourite from "./components/removeFav";
 import SearchBar from "./components/searchBar";
 
 const App = () => {
@@ -28,10 +29,32 @@ const App = () => {
   const addFavouriteMovie = (movie) => {
     const newFavouriteList = [...favourites, movie];
     setFavourites(newFavouriteList);
+    saveToLocalStorage(newFavouriteList);
+  };
+
+  // save to local storage
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("favourites", JSON.stringify(items));
+  };
+
+  // get from local storage
+  useEffect(() => {
+    const localFavourites = localStorage.getItem("favourites");
+    if (localFavourites) {
+      setFavourites(JSON.parse(localFavourites));
+    }
+  }, []);
+
+  // remove favourite movie
+  const removeFavouriteMovie = (movie) => {
+    const newFavouriteList = favourites.filter(
+      (favourite) => favourite.imdbID !== movie.imdbID
+    );
+    setFavourites(newFavouriteList);
   };
 
   return (
-    <div className="container">
+    <div>
       <div className="title text-center flex-column py-4">
         <a href="/">
           <MovieListHeader header="Movie" />
@@ -53,8 +76,8 @@ const App = () => {
       <div className="content py-4">
         <MovieList
           movies={favourites}
-          handleFavouritesClick={addFavouriteMovie}
-          favouriteComp={MyFavourite}
+          handleFavouritesClick={removeFavouriteMovie}
+          favouriteComp={RemoveFavourite}
         />
       </div>
     </div>
